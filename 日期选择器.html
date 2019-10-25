@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>日期选择器</title>
+	<script type="text/javascript" src="./jquery.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#root {
+			width: 100px;
+			height: 1.5rem;
+			border: 2px solid #ccc;
+		}
+		.picker{
+			position: relative;
+			width: 200px;
+			height: 180px;
+			border: 4px solid #08f ;
+			border-radius: 5px;
+			background-color: #eee ; 
+		}
+		button{
+			width: 50px;
+			height: 25px;
+			border-radius: 5px;
+			background-color: #08f;
+		}
+		.add{
+			position: absolute;
+			top: 25px;
+			right: 0;
+		}
+		.reduce{
+			position: absolute;
+			top: 20px;
+			left: 0;
+		}
+		.month,.year{
+			display: block;
+			text-align: center;
+		}
+		.day{
+			width: 200px;
+			margin: 10px auto;
+		}
+		.day span{
+			display: inline-block;
+			width: 24px;
+			margin: 2px;
+			text-align: center;
+			/*outline: 2px solid #ddd;*/
+			cursor: pointer;
+		}
+		.day span:hover{
+			background-color: #08f;
+		}
+		.select-year{
+			position: absolute;
+			top: 20px;
+			left: calc(50% - 50px);
+		}
+		.select-year select{
+			width: 100px;
+			height: 35px;
+			font-size: 22px;
+		}
+	</style>
+</head>
+<body>
+	<div id="root"></div>
+	<div class="picker">
+		<button class="reduce"><</button>
+		<div class="year">2019</div>
+		<div class="month"></div>
+		<button class="add">></button>
+		<div class="day"></div>
+		<div class="select-year">
+			<select></select>
+		</div>
+		<input type="date" name="">
+	</div>
+	<script type="text/javascript">
+		var data = new Array(12);
+		
+		function getYearData(year){
+			for(let i=0;i<data.length;i++){
+				data[i] = [];
+			}
+			let bigMonths = [1,3,5,7,8,10,12];
+			let smallMonths = [4,6,9,11]
+			for(let i=1;i<13;i++){
+				if(bigMonths.indexOf(i)!==-1){
+					for(let j=1;j<32;j++){
+						data[i-1].push(j);
+					}
+				}else if(smallMonths.indexOf(i)!==-1){
+					for(let j=1;j<31;j++){
+						data[i-1].push(j);
+					}
+				}else{
+					if(year%4==0&&year%100!=0){
+						for(let j=1;j<30;j++){
+							data[i-1].push(j);
+						}
+					}else{
+						for(let j=1;j<29;j++){
+							data[i-1].push(j);
+						}
+					}
+				}
+			}
+			// 十二个月的数据
+			console.log(data);
+		}
+
+
+		// 当前月份
+		let date = new Date();
+		let month = date.getMonth();
+		console.log(month)
+		$(".month").text(month+"月");
+
+
+		// 当前年份
+		let year = date.getFullYear();
+		$(".year").text(year+"年");
+
+		getYearData(year);
+
+		// 选择年份
+		$('.select-year').hide("fast");
+		$('.year').click(function(){
+			$('.select-year').toggle("fast");
+		})
+		let optionText = '';
+		for(let i=1900;i<=2019;i++){
+			optionText += '<option>'+i+'</option>'
+		}
+		$('select').html(optionText);
+		$('select').change(function(e){
+			// console.log($('select').val(),e);
+			year = e.target.value
+			$(".year").text(year+"年");	
+			getYearData(year);
+			setDays(month);
+			$('.select-year').toggle("fast");
+		})
+
+		function setDays(month,year){
+			// 设置天数
+			var days = data[month-1];
+			// console.log(days)
+			let daysText = '';
+			let weekNum = 0;
+			for(let i=1;i<=data[month-1].length;i++){
+				daysText += '<span>'+i+'</span>';
+				weekNum++;
+				if(weekNum%7==0&&weekNum!=0){
+					daysText += '<br>';				
+				}
+			}
+			$('.day').html(daysText)
+		}
+		setDays(month);
+
+		// 设置加月份
+		$('.add').click(function(){
+			setDays(month+1);
+			month += 1;
+			$(".month").text(month+"月");
+		})
+		// 设置减月份
+		$('.reduce').click(function(){
+			setDays(month-1);
+			month -= 1;
+			$(".month").text(month+"月");
+		})
+		$("#root").click(function(){
+			$('.picker').toggle("slow");
+		})
+
+
+		// 输出选择
+		function timePicker(separator=" "){
+			let yearChoose = year;
+			let monthChoose = month;
+			let dayChoose = day;
+			$('#root').text(yearChoose+separator+monthChoose+separator+dayChoose);
+			console.log(yearChoose+separator+monthChoose+separator+dayChoose);
+		}
+
+		// 最终获取所有
+		let day = 1;
+		$('.picker').on('click','.day span',function(e){
+			// console.log(e.target.innerText,1);
+			day = e.target.innerText;
+			timePicker("/");
+		})
+
+	</script>
+</body>
+</html>

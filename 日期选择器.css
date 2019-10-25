@@ -1,0 +1,80 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#root {
+	width: 100px;
+	height: 1.5rem;
+	border: 2px solid #ccc;
+}
+.picker{
+	position: relative;
+	width: 220px;
+	height: 230px;
+	border: 4px solid #08f ;
+	border-radius: 5px;
+	background-color: #eee ; 
+}
+button{
+	width: 50px;
+	height: 25px;
+	border-radius: 5px;
+	background-color: #08f;
+}
+.add{
+	position: absolute;
+	top: 20px;
+	right: 0;
+}
+.reduce{
+	position: absolute;
+	top: 20px;
+	left: 0;
+}
+.month,.year{
+	display: block;
+	text-align: center;
+}
+.day{
+	width: 200px;
+	margin: 10px auto;
+}
+.day span{
+	display: inline-block;
+	width: 24px;
+	margin: 2px;
+	text-align: center;
+	/*outline: 2px solid #ddd;*/
+	cursor: pointer;
+}
+.day span:hover{
+	background-color: #08f;
+}
+.week {
+	font-size: 14px;
+	text-align: center;
+}
+.week span{
+	display: inline-block;
+	width: 24px;
+	}
+.select-year{
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: calc(50% - 50px);
+}
+.select-year select{
+	width: 100px;
+	height: 35px;
+	font-size: 22px;
+}
+.red{
+	color: salmon;
+}
+.blue{
+	background-color: #08f;
+}
+.gray{
+	color: #aaa;
+}
