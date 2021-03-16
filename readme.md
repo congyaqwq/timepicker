@@ -1,33 +1,37 @@
-»ùÓÚjqueryµÄÒ»¿îÊ±¼äÑ¡ÔñÆ÷×é¼þ£¬Ã¿´ÎÖØÐÂ´ò¿ªÊ±¼ä»áÖØÖÃ
+## åŸºäºŽjqueryçš„ä¸€æ¬¾æ—¶é—´é€‰æ‹©å™¨ç»„ä»¶ï¼Œæ¯æ¬¡é‡æ–°æ‰“å¼€æ—¶é—´ä¼šé‡ç½®
 	
 	
-Ö÷ÒªË¼Â·
-	¶¨ÒåÈ«¾Ö±äÁ¿year£¬month£¬day£¬Ê¹ÓÃº¯Êý¶ÔÆä½øÐÐ²Ù×÷£¬×îÖÕ´ïµ½Õ¹Ê¾Ð§¹û
+### ä¸»è¦æ€è·¯
+	å®šä¹‰å…¨å±€å˜é‡yearï¼Œmonthï¼Œdayï¼Œä½¿ç”¨å‡½æ•°å¯¹å…¶è¿›è¡Œæ“ä½œï¼Œæœ€ç»ˆè¾¾åˆ°å±•ç¤ºæ•ˆæžœ
 	
-·â×°×é¼þ·½·¨
+### å°è£…ç»„ä»¶æ–¹æ³•
+```javascript
 	$.extend({
 		timePickerCom: function(name) {
 			...
 		}
 	)}
 	
-Ê¹ÓÃ·½·¨
-	ÏÈµ÷ÓÃjqueryÔÙµ¼Èë×é¼þ
+```
+### ä½¿ç”¨æ–¹æ³•
+```html
+	<!-- å…ˆè°ƒç”¨jqueryå†å¯¼å…¥ç»„ä»¶ -->
 	<!DOCTYPE html>
 	<html>
 	<head>
 		<meta charset="utf-8">
-		<title>µ÷ÓÃ×é¼þ</title>
-		<link rel="stylesheet" type="text/css" href="ÈÕÆÚÑ¡ÔñÆ÷.css">
+		<title>è°ƒç”¨ç»„ä»¶</title>
+		<link rel="stylesheet" type="text/css" href="æ—¥æœŸé€‰æ‹©å™¨.css">
 		<script type="text/javascript" src="./jquery.js"></script>
-		<script type="text/javascript" src="./ÈÕÆÚÑ¡ÔñÆ÷.js"></script>
+		<script type="text/javascript" src="./æ—¥æœŸé€‰æ‹©å™¨.js"></script>
 	</head>
 	<body>
 		<div id="app"></div>
 	</body>
 	</html>
+```
 
-Èý¸ö°æ±¾
-	µÚÒ»¸ö£¬Ã»ÓÐÐÇÆÚ
-	µÚ¶þ¸ö£¬ÓÐÐÇÆÚ£¬Ã»ÓÐÉÏÒ»ÔÂÏÂÒ»ÔÂ
-	µÚÈý¸ö£¬±È½Ï±ê×¼µÄ7*6¸ñÊ½
+### ä¸‰ä¸ªç‰ˆæœ¬
+	1. ç¬¬ä¸€ä¸ªï¼Œæ²¡æœ‰æ˜ŸæœŸ
+	2. ç¬¬äºŒä¸ªï¼Œæœ‰æ˜ŸæœŸï¼Œæ²¡æœ‰ä¸Šä¸€æœˆä¸‹ä¸€æœˆ
+	3. ç¬¬ä¸‰ä¸ªï¼Œæ¯”è¾ƒæ ‡å‡†çš„7*6æ ¼å¼
